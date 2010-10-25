@@ -2,10 +2,10 @@
 	$.fn.showFilter = function(selectors, criteria, options) {
 		this.data("lastVal", this.val());
 		var input = this;
-		var filterInput = function(input) { $.trim(input.val()).toLowerCase().replace(/\s+/, " ") }
+		var filterInput = function(input) { return $.trim(input).toLowerCase().replace(/\s+/, " ") }
 		var test = function() {
 			var c = criteria($(this));
-			var terms = $.trim(input.val()).toLowerCase().split(/\s+/);
+			var terms = filterInput(input.val()).split(/\s+/);
 			var matched = false;
 			for (i in c) {
 				var matches = true;
@@ -16,7 +16,8 @@
 			else $(this).hide();
 		}
 		var filter = function() {
-			if ($(this).val() === $(this).data("lastVal")) return;
+			if (filterInput($(this).val()) === filterInput($(this).data("lastVal"))) return;
+			alert();
 			$(this).data("lastVal", $(this).val());
 			$(selectors).each(test);
 		}
