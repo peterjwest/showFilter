@@ -1,7 +1,8 @@
 (function($){
 	$.fn.showFilter = function(selectors, criteria, options) {
-		this.data("lastVal",this.val());
+		this.data("lastVal", this.val());
 		var input = this;
+		var filterInput = function(input) { $.trim(input.val()).toLowerCase().replace(/\s+/, " ") }
 		var test = function() {
 			var c = criteria($(this));
 			var terms = $.trim(input.val()).toLowerCase().split(/\s+/);
@@ -19,6 +20,6 @@
 			$(this).data("lastVal", $(this).val());
 			$(selectors).each(test);
 		}
-		this.bind("keyup keydown change paste", filter);
+		this.bind("keyup keydown input change paste", filter);
 	};
 })(jQuery);
