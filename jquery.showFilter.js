@@ -4,9 +4,13 @@
 		var input = this;
 		var test = function() {
 			var c = criteria($(this));
-			var matched = false;
 			var terms = $.trim(input.val()).toLowerCase().split(/\s+/);
-			for (i in c) for (j in terms) if (c[i].toLowerCase().indexOf(terms[j]) > -1) matched = true;
+			var matched = false;
+			for (i in c) {
+				var matches = true;
+				for (j in terms) if (!(c[i].toLowerCase().indexOf(terms[j]) > -1)) matches = false;
+				if (matches) matched = true;
+			}
 			if (matched) $(this).show();
 			else $(this).hide();
 		}
