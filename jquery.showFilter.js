@@ -1,12 +1,13 @@
 (function($){
-	$.fn.showFilter = function(selectors, criteria, options) {
+	$.fn.showFilter = function(selectors, options) {
 		var settings = {
 			filterClass: 'showFilter', 
+			criteria: function(e) { return [e.text()]; },
 			filter: function(e) { e.hide(); }, 
 			unfilter: function(e) { e.show(); }
 		};
 		if (options) $.extend(settings, options);
-		this.data("lastVal", this.val());
+		this.data("lastVal", "");
 		var id = 1;
 		while($("."+settings.filterClass+id).length > 0) id++;
 		this.addClass(settings.filterClass+id);
@@ -19,10 +20,10 @@
 			for (i in filters) if (filters[i] && i != id) filtered = true;
 			var terms = filterInput(input.val()).split(/[,\s]+/);
 			var matched = true;
-			var criterias = criteria($(this));
+			var criteria = settings.criteria($(this));
 			for (j in terms) {
 				var matches = false;
-				for (i in criterias) if ((criterias[i].toLowerCase().indexOf(terms[j]) > -1)) matches = true;
+				for (i in criteria) if ((criteria[i].toLowerCase().indexOf(terms[j]) > -1)) matches = true;
 				if (!matches) matched = false;
 			}
 			if (matched) {
@@ -40,5 +41,6 @@
 			$(selectors).each(test);
 		}
 		this.bind("keyup keydown input change paste", filter);
+		this.each(filter);
 	};
 })(jQuery);
