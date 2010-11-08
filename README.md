@@ -73,5 +73,5 @@ showFilter needs to add a class to each filter input, by default this is "showFi
 ### Examples ###
 See some more examples in examples.htm
 
-## Todo ##
+## Bugs / TODO ##
 There's nothing on my TODO list right now, feel free to email me any bugs or suggestions at peterjwest3@gmail.com
