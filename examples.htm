@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script src="jquery.showFilter.js"></script>
+	</head>
+	<body>
+		<input type="text" id="pets">
+		<ul class="pets" style="clear: left;">
+			<li>Cat</li>
+			<li>Dog</li>
+			<li>Monkey</li>
+			<li>Cat Fish</li>
+		</ul>
+		<script>$("#pets").showFilter(".pets li");</script>
+		<hr>
+		<input type="text" id="input2">
+		<ul class="foods1" style="clear: left;">
+			<li>Brown bread</li>
+			<li>White bread</li>
+			<li>Milk</li>
+			<li>Eggs</li>
+		</ul>
+		<ul class="foods2">
+			<li>Fish</li>
+			<li>Meat</li>
+			<li>MEAAAT</li>
+		</ul>
+		<script>
+			$("#input2").showFilter(".foods1 li");
+			$("#input2").showFilter(".foods2 li");
+		</script>
+		<hr>
+		<table> 
+			<thead> 
+				<tr> 
+					<th colspan="2"><input class="name" type="text"></th> 
+					<th><input class="hobbies" type="text"></th> 
+				</tr> 
+				<tr> 
+					<th>First Name</th>
+					<th>Last Name</th> 
+					<th>Hobbies</th>
+				</tr> 
+			</thead> 
+			<tbody> 
+				<tr> 
+					<td class="first">John</td> 
+					<td class="last">Smith</td>
+					<td class="hobbies">Cats, swimming, TV, video games</td>
+				</tr> 
+				<tr> 
+					<td class="first">Frank</td> 
+					<td class="last">Johnson</td> 
+					<td class="hobbies">Scuba diving, cat/dog walking</td>
+				</tr> 
+				<tr> 
+					<td class="first">Emma</td> 
+					<td class="last">Smith</td> 
+					<td class="hobbies">Murder, homicide, etc</td>
+				</tr> 
+				<tr> 
+					<td class="first">Tim</td> 
+					<td class="last">Samuel</td> 
+					<td class="hobbies">Computer games, TV, junk food</td>
+				</tr> 
+			</tbody> 
+		</table>
+		<script>
+			$("thead .name").showFilter("table tbody tr", { criteria: function(e) { return [e.children(".first, .last").text()]; } });
+			$("thead .hobbies").showFilter("table tbody tr", { criteria: function(e) { return [e.children(".hobbies").text()]; } });
+		</script>
+	</body>
+</html>

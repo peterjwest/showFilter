@@ -69,6 +69,9 @@ You can specify a custom filter and unfilter action, for animations and effects:
 showFilter needs to add a class to each filter input, by default this is "showFilter1", "showFilter2" etc. You can change this to something else if you want:
 
 	$("#input").showFilter(".people li", {filterClass: "something_else"});
+	
+### Examples ###
+See some more examples in examples.htm
 
 ## Todo ##
 There's nothing on my TODO list right now, feel free to email me any bugs or suggestions at peterjwest3@gmail.com
