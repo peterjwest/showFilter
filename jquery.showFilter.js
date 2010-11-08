@@ -7,15 +7,17 @@
 			unfilter: function(e) { e.show(); }
 		};
 		if (options) $.extend(settings, options);
-		this.data("lastVal", "");
+		var lastVals = this.data('showFilter');
+		if (!lastVals) lastVals = this.data('showFilter', {}).data('showFilter');
 		var id = 1;
-		while($("."+settings.filterClass+id).length > 0) id++;
+		while ($("."+settings.filterClass+id).length > 0) id++;
 		this.addClass(settings.filterClass+id);
+		if (lastVals[id] === undefined) lastVals[id] = '';
 		var input = this;
 		var filterInput = function(input) { return $.trim(input.toLowerCase().replace(/[,\s]+/, " ")); }
 		var test = function() {
-			var filters = $(this).data("showFilter");
-			if (!filters) filters = $(this).data("showFilter", {}).data("showFilter");
+			var filters = $(this).data('showFilter');
+			if (!filters) filters = $(this).data('showFilter', {}).data('showFilter');
 			var filtered = false;
 			for (i in filters) if (filters[i] && i != id) filtered = true;
 			var terms = filterInput(input.val()).split(/[,\s]+/);
@@ -36,11 +38,12 @@
 			}
 		}
 		var filter = function() {
-			if (filterInput($(this).val()) === filterInput($(this).data("lastVal"))) return;
-			$(this).data("lastVal", $(this).val());
+			if (filterInput($(this).val()) === filterInput(lastVals[id])) return;
+			lastVals[id] = $(this).val();
 			$(selectors).each(test);
 		}
 		this.bind("keyup keydown input change paste", filter);
 		this.each(filter);
+		return this;
 	};
 })(jQuery);
