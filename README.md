@@ -14,7 +14,7 @@ showFilter allows you to filter a live (or static) set of jQuery elements based 
 		$("#input").showFilter($(".foods li"));
 	</script>
 	
-This adds a simple filter to the list of shopping ingredients. As you type, the list is filtered dynamically according to the terms you enter. The search "brown bread" will filter elements unless they contain "brown" and "bread".
+This adds a filter to the list of shopping ingredients. As you type, the list is filtered dynamically according to the terms you enter. The search "brown bread" will filter elements unless they contain "brown" and "bread".
 
 You can specify elements using a jQuery object or a selector string. Using a jQuery object has better performance, while using a selector string will create a "live" filter which will work on all current and future elements which match it ([similar to .live()](http://api.jquery.com/live/)):
 
