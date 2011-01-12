@@ -1,7 +1,7 @@
 # showFilter - A jQuery plugin #
 
 ## Introduction ##
-showFilter allows you to filter a live (or static) set of jQuery elements based on a form field. It's case insensitive and matches each term separately. Here's a simple example:
+showFilter allows you to filter a live (or static) set of jQuery elements based on a form field. It's case insensitive and matches each word separately. Here's a simple example:
 
 	<input type="text" id="input">
 	<ul class="foods">
@@ -16,7 +16,7 @@ showFilter allows you to filter a live (or static) set of jQuery elements based 
 	
 This adds a filter to the list of shopping ingredients. As you type, the list is filtered dynamically according to the terms you enter. The search "brown bread" will filter elements unless they contain "brown" and "bread".
 
-You can specify elements using a jQuery object or a selector string. Using a jQuery object has better performance, while using a selector string will create a "live" filter which will work on all current and future elements which match it ([similar to .live()](http://api.jquery.com/live/)):
+You can specify elements using a jQuery object or a selector string. Using a jQuery object has better performance, while using a selector string will create a "live" filter which will work on all current and future elements which match it, [similar to .live()](http://api.jquery.com/live/):
 
 	$("#input1").showFilter($(".foods li"));
 	$("#input2").showFilter(".foods li");
@@ -76,7 +76,7 @@ showFilter needs to add a class to each filter input, by default this is "showFi
 	$("#input").showFilter($(".people li"), {filterClass: "something_else"});
 	
 ### Examples ###
-See some more examples in examples.htm
+See some more examples in [examples.htm](blob/master/examples.htm).
 
 ## Bugs / TODO ##
 There's nothing on my TODO list right now, feel free to email me any bugs or suggestions at peterjwest3@gmail.com
