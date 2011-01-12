@@ -1,5 +1,5 @@
 (function($){
-	$.fn.showFilter = function(selectors, options) {
+	$.fn.showFilter = function(elements, options) {
 		var settings = {
 			filterClass: 'showFilter', 
 			criteria: function(e) { return [e.text()]; },
@@ -40,7 +40,8 @@
 		var filter = function() {
 			if (filterInput($(this).val()) === filterInput(lastVals[id])) return;
 			lastVals[id] = $(this).val();
-			$(selectors).each(test);
+			if (elements instanceof jQuery) elements.each(test);
+			else $(elements).each(test);
 		}
 		this.bind("keyup keydown input change paste", filter);
 		this.each(filter);

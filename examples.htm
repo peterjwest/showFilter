@@ -3,32 +3,39 @@
 	<head>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 		<script src="jquery.showFilter.js"></script>
+		<style type="text/css">.green { color: green; } .red { color: red; } </style>
 	</head>
 	<body>
 		<input type="text" id="pets">
+		<a class="add" href="#add">Add another</a>
 		<ul class="pets" style="clear: left;">
 			<li>Cat</li>
 			<li>Dog</li>
 			<li>Monkey</li>
 			<li>Cat Fish</li>
 		</ul>
-		<script>$("#pets").showFilter(".pets li");</script>
+		<script>
+			$(".add").click(function() { $(".pets :nth-child("+Math.floor(Math.random()*4+1)+")").clone().appendTo($(".pets")); return false; });
+			$("#pets").showFilter(".pets li");
+		</script>
 		<hr>
 		<input type="text" id="input2">
-		<ul class="foods1" style="clear: left;">
+		<div style="clear: both;"></div>
+		<ul class="foods1" style="float: left; width: 100px;">
 			<li>Brown bread</li>
 			<li>White bread</li>
 			<li>Milk</li>
 			<li>Eggs</li>
+			<li>Fruit</li>
 		</ul>
-		<ul class="foods2">
-			<li>Fish</li>
-			<li>Meat</li>
-			<li>MEAAAT</li>
+		<ul class="foods2" style="float: left; width: 100px;">
+			<li class="green">Fruit and Veg</li>
+			<li class="green">Milk and Eggs</li>
+			<li class="green">Breads</li>
 		</ul>
+		<div style="clear: both;"></div>
 		<script>
-			$("#input2").showFilter(".foods1 li");
-			$("#input2").showFilter(".foods2 li");
+			$("#input2").showFilter($(".foods1 li")).showFilter($(".foods2 li"), {filter: function(e) { e.addClass("red"); }, unfilter: function(e) { e.removeClass("red"); }});
 		</script>
 		<hr>
 		<table> 
@@ -67,8 +74,8 @@
 			</tbody> 
 		</table>
 		<script>
-			$("thead .name").showFilter("table tbody tr", { criteria: function(e) { return [e.children(".first, .last").text()]; } });
-			$("thead .hobbies").showFilter("table tbody tr", { criteria: function(e) { return [e.children(".hobbies").text()]; } });
+			$($("thead .name")).showFilter("table tbody tr", { criteria: function(e) { return [e.children(".first, .last").text()]; } });
+			$($("thead .hobbies")).showFilter("table tbody tr", { criteria: function(e) { return [e.children(".hobbies").text()]; } });
 		</script>
 	</body>
 </html>
