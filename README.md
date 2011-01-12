@@ -76,7 +76,7 @@ showFilter needs to add a class to each filter input, by default this is "showFi
 	$("#input").showFilter($(".people li"), {filterClass: "something_else"});
 	
 ### Examples ###
-See some more examples in [examples.htm](showFilter/blob/master/examples.htm).
+See some more examples in [examples.htm](/peterjwest/showFilter/blob/master/examples.htm).
 
 ## Bugs / TODO ##
 There's nothing on my TODO list right now, feel free to email me any bugs or suggestions at peterjwest3@gmail.com
